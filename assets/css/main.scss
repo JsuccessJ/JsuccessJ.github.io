@@ -21,10 +21,7 @@ search: false
     margin-right: 5px;
     margin-left: 5px;
 }
-.section_title{
-    font-family:    Arial, Helvetica, sans-serif;
-    color: rgba(250, 50, 50, 0.9);
-}
+
 .my_list{
     font-family:  Helvetica, Arial, sans-serif;
     margin-top: 0.5em;
@@ -151,6 +148,15 @@ hr.sep {
     background: rgb(255, 255, 255);  // set a color to hide content that may appear below masthead
     font-weight: 500;
     // color: rgba(250, 250, 250, 1);
+}
+
+// 네비게이션 호버/활성 상태 밑줄을 파란색으로 변경
+.greedy-nav .visible-links a:before {
+    background: #4285F4 !important;  // 파란색으로 변경
+}
+
+.greedy-nav .visible-links a:hover:before {
+    background: #114EC8 !important;  // 호버 시 진한 파란색
 }
 
 body {

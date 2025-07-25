@@ -255,24 +255,37 @@ body {
         width: 100%;
     }
     
-    /* 모바일 네비게이션 개선 */
-    .masthead {
-        font-size: 15px;  // 모바일에서 폰트 크기 축소
-        height: 55px;     // 높이도 약간 축소
+    /* 모바일에서 상단 메뉴들 모두 숨기고 햄버거만 남기기 */
+    .greedy-nav .visible-links {
+        display: none !important;
     }
     
-    .greedy-nav a {
-        margin: 0 0.5rem; // 메뉴 간격 축소
-        font-size: 15px;  // 폰트 크기 축소
-    }
-    
-    // 간단하게 햄버거 메뉴 색상만 변경
     .greedy-nav__toggle {
+        display: block !important;
         color: #4285F4 !important;
     }
     
     .greedy-nav__toggle:hover {
         color: #114EC8 !important;
+    }
+    
+    /* 햄버거 드롭다운 메뉴 스타일 */
+    .greedy-nav .hidden-links {
+        background: white !important;
+        border: 1px solid #4285F4 !important;
+        border-radius: 5px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    }
+    
+    .greedy-nav .hidden-links a {
+        color: #333 !important;
+        padding: 12px 20px !important;
+        border-bottom: 1px solid #eee !important;
+    }
+    
+    .greedy-nav .hidden-links a:hover {
+        background-color: #f8f9fa !important;
+        color: #4285F4 !important;
     }
 }
 @media screen and (max-width:576px) {

@@ -263,27 +263,68 @@ body {
         visibility: hidden !important;
     }
     
-    /* 햄버거 메뉴 강제 표시 - 모든 가능한 셀렉터 */
+    /* 햄버거 메뉴 위치 및 스타일 수정 */
     .greedy-nav__toggle,
     .masthead .greedy-nav__toggle,
-    .greedy-nav .greedy-nav__toggle,
-    button.greedy-nav__toggle,
-    .masthead button.greedy-nav__toggle {
+    button.greedy-nav__toggle {
         display: block !important;
         visibility: visible !important;
-        position: relative !important;
-        float: right !important;
+        position: absolute !important;
+        top: 50% !important;
+        right: 1rem !important;
+        transform: translateY(-50%) !important;
         color: #4285F4 !important;
         background: transparent !important;
         border: none !important;
-        font-size: 18px !important;
-        padding: 10px !important;
+        font-size: 20px !important;
+        padding: 8px !important;
         cursor: pointer !important;
-        z-index: 999 !important;
+        z-index: 1000 !important;
     }
     
     .greedy-nav__toggle:hover {
         color: #114EC8 !important;
+    }
+    
+    /* 햄버거 드롭다운 메뉴가 작동하도록 설정 */
+    .greedy-nav .hidden-links {
+        display: block !important;
+        position: absolute !important;
+        top: 100% !important;
+        right: 0 !important;
+        background: white !important;
+        border: 1px solid #4285F4 !important;
+        border-radius: 5px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+        min-width: 200px !important;
+        z-index: 1001 !important;
+    }
+    
+    .greedy-nav .hidden-links.hidden {
+        display: none !important;
+    }
+    
+    .greedy-nav .hidden-links a {
+        display: block !important;
+        color: #333 !important;
+        padding: 12px 20px !important;
+        text-decoration: none !important;
+        border-bottom: 1px solid #eee !important;
+        font-size: 16px !important;
+    }
+    
+    .greedy-nav .hidden-links a:hover {
+        background-color: #f8f9fa !important;
+        color: #4285F4 !important;
+    }
+    
+    .greedy-nav .hidden-links a:last-child {
+        border-bottom: none !important;
+    }
+    
+    /* masthead를 relative로 설정하여 absolute 위치 기준점 제공 */
+    .masthead {
+        position: relative !important;
     }
 }
 @media screen and (max-width:576px) {

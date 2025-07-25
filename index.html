@@ -19,10 +19,10 @@ author_profile: true
     filter: none;
     box-shadow: 0 0 15px rgba(67, 124, 227, 0.4);
     border-radius: 6px;
-    padding: 0.5em 0.8em;
+    padding: 0.3em 0.8em;
     background: rgba(255, 255, 255, 0.03);
-    margin-top: -1.2em;
-    margin-bottom: 0.2em;
+    margin-top: -0.5em;
+    margin-bottom: 0;
 }
 </style>
 
@@ -233,11 +233,30 @@ document.addEventListener('DOMContentLoaded', function() {
             const href = this.getAttribute('href');
             if (href && href.startsWith('/#')) {
                 const targetId = href.substring(1); // Remove the '/'
+                const targetSection = document.querySelector(targetId);
                 
-                // Small delay to allow smooth scrolling
-                setTimeout(() => {
-                    highlightSection(targetId);
-                }, 500);
+                if (targetSection) {
+                    // Prevent default anchor behavior
+                    e.preventDefault();
+                    
+                    // Calculate position to center the section
+                    const rect = targetSection.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    const sectionHeight = rect.height;
+                    const offsetTop = targetSection.offsetTop;
+                    const centerPosition = offsetTop - (windowHeight - sectionHeight) / 2;
+                    
+                    // Smooth scroll to center position
+                    window.scrollTo({
+                        top: Math.max(0, centerPosition),
+                        behavior: 'smooth'
+                    });
+                    
+                    // Small delay to allow smooth scrolling, then highlight
+                    setTimeout(() => {
+                        highlightSection(targetId);
+                    }, 500);
+                }
             }
         });
     });

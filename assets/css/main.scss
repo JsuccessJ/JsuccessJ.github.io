@@ -271,18 +271,38 @@ body {
         display: none !important;
     }
     
-    .greedy-nav__toggle {
-        display: flex !important;
+    // 햄버거 메뉴 강제 표시 - 더 강력한 방법
+    .greedy-nav .greedy-nav__toggle,
+    .masthead .greedy-nav__toggle,
+    button.greedy-nav__toggle {
+        display: block !important;
+        position: absolute !important;
+        right: 1rem !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
         color: #4285F4 !important;
-        order: 999;
-        margin-left: auto;
+        background: transparent !important;
+        border: none !important;
+        font-size: 1.2rem !important;
+        cursor: pointer !important;
+        z-index: 1000 !important;
+        width: auto !important;
+        height: auto !important;
+        padding: 0.5rem !important;
     }
     
-    // 햄버거 메뉴가 확실히 보이도록 추가 설정
+    .greedy-nav__toggle:hover {
+        color: #114EC8 !important;
+    }
+    
+    // masthead 레이아웃 조정
+    .masthead {
+        position: relative !important;
+    }
+    
     .masthead__inner-wrap {
-        display: flex !important;
-        justify-content: space-between;
-        align-items: center;
+        position: relative !important;
+        display: block !important;
     }
     
     .greedy-nav__toggle:hover {

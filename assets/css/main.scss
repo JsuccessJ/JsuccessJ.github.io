@@ -266,14 +266,23 @@ body {
         font-size: 15px;  // 폰트 크기 축소
     }
     
-    // 모바일에서는 모든 네비게이션 링크 숨기기 (햄버거 메뉴로만 접근)
-    .greedy-nav .visible-links {
+    // 모바일에서는 네비게이션 링크들 숨기고 햄버거 메뉴만 표시
+    .greedy-nav .visible-links li {
         display: none !important;
     }
     
     .greedy-nav__toggle {
-        display: block !important;
+        display: flex !important;
         color: #4285F4 !important;
+        order: 999;
+        margin-left: auto;
+    }
+    
+    // 햄버거 메뉴가 확실히 보이도록 추가 설정
+    .masthead__inner-wrap {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
     }
     
     .greedy-nav__toggle:hover {

@@ -250,7 +250,7 @@ body {
         font-size: 14px;
     }
 }
-@media screen and (max-width:768px) {
+@media screen and (max-width:1024px) {
     .section{
         width: 100%;
     }
@@ -304,18 +304,17 @@ body {
         padding-right: 1em;
     }
     
-    /* 매우 작은 모바일 화면 최적화 */
-    .masthead {
-        font-size: 14px;
-        height: 50px;
+    /* 작은 모바일에서도 햄버거 메뉴만 표시 */
+    .greedy-nav .visible-links {
+        display: none !important;
     }
     
-    .greedy-nav a {
-        margin: 0 0.3rem;
-        font-size: 14px;
+    .greedy-nav__toggle {
+        display: block !important;
+        color: #4285F4 !important;
     }
     
-    .masthead__inner-wrap {
-        padding: 0.5em 1em;
+    .greedy-nav__toggle:hover {
+        color: #114EC8 !important;
     }
 } 

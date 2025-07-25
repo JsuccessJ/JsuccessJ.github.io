@@ -3,6 +3,53 @@ layout: single
 classes: wide
 author_profile: true
 ---
+
+<style>
+.section {
+    transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+.section.dimmed {
+    opacity: 0.3;
+    filter: blur(1px);
+}
+
+.section.highlighted {
+    opacity: 1;
+    filter: none;
+    box-shadow: 0 0 20px rgba(67, 124, 227, 0.3);
+    border-radius: 8px;
+    padding: 1em;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.clear-highlight {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(67, 124, 227, 0.9);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.clear-highlight.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.clear-highlight:hover {
+    background: rgba(67, 124, 227, 1);
+}
+</style>
+
 <div id="bio" class="section">
 	<h5 class="section-title">About Me</h5>
 	<hr class="sep">
@@ -172,3 +219,81 @@ author_profile: true
 		<strong>GitHub:</strong> <a href="https://github.com/JsuccessJ">https://github.com/JsuccessJ</a>
 	</p>
 </div> 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Create clear highlight button
+    const clearButton = document.createElement('button');
+    clearButton.className = 'clear-highlight';
+    clearButton.textContent = '전체 보기';
+    clearButton.title = 'Clear section highlight';
+    document.body.appendChild(clearButton);
+
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('.greedy-nav a[href^="/#"]');
+    const sections = document.querySelectorAll('.section');
+
+    // Function to clear all highlights
+    function clearHighlights() {
+        sections.forEach(section => {
+            section.classList.remove('dimmed', 'highlighted');
+        });
+        clearButton.classList.remove('show');
+    }
+
+    // Function to highlight specific section
+    function highlightSection(targetId) {
+        // Clear previous highlights
+        clearHighlights();
+        
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+            // Dim all sections
+            sections.forEach(section => {
+                if (section !== targetSection) {
+                    section.classList.add('dimmed');
+                } else {
+                    section.classList.add('highlighted');
+                }
+            });
+            
+            // Show clear button
+            clearButton.classList.add('show');
+        }
+    }
+
+    // Add click event listeners to navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('/#')) {
+                const targetId = href.substring(1); // Remove the '/'
+                
+                // Small delay to allow smooth scrolling
+                setTimeout(() => {
+                    highlightSection(targetId);
+                }, 500);
+            }
+        });
+    });
+
+    // Clear highlight button event
+    clearButton.addEventListener('click', clearHighlights);
+
+    // Clear highlights when clicking outside sections
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.section') && 
+            !e.target.closest('.greedy-nav') && 
+            !e.target.closest('.clear-highlight')) {
+            clearHighlights();
+        }
+    });
+
+    // Clear highlights on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            clearHighlights();
+        }
+    });
+});
+</script> 

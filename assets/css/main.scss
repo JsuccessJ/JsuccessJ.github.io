@@ -167,7 +167,49 @@ body {
     padding-bottom: 0;
     margin-top: -1em;
     margin-bottom: 0;
+    transition: opacity 0.5s ease, filter 0.5s ease;
 }
+
+.section.dimmed {
+    opacity: 0.3;
+    filter: blur(1px);
+}
+
+.section.highlighted {
+    opacity: 1;
+    filter: none;
+    box-shadow: 0 0 20px rgba(67, 124, 227, 0.3);
+    border-radius: 8px;
+    padding: 1em;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.clear-highlight {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(67, 124, 227, 0.9);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.clear-highlight.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.clear-highlight:hover {
+    background: rgba(67, 124, 227, 1);
+}
+
 .section > p{
     font-size: 15px;
     text-align: justify;

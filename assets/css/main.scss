@@ -1,0 +1,251 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+.inner-ul{
+    margin-top: 0em;
+    margin-bottom: 0em;
+    margin-left: -1em;
+}
+.inner-li{
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+.dot-sep{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.section_title{
+    font-family:    Arial, Helvetica, sans-serif;
+    color: rgba(250, 50, 50, 0.9);
+}
+.my_list{
+    font-family:  Helvetica, Arial, sans-serif;
+    margin-top: 0.5em;
+    margin-bottom: 0em;
+    font-size:  14px;
+    border-collapse: collapse;
+}
+
+.paper{
+}
+.paper_head{
+    vertical-align: top;
+    text-align: right;
+    border-bottom: 0px;
+    padding-right: 2em;
+    padding-top: 1px;
+    padding-bottom: 5px;
+}
+.paper_content{
+    border-bottom: 0px;
+    padding-top: 0em;
+    padding-bottom: 20px;
+}
+.title{
+    font-size: 1em;
+}
+.year{
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size:  18px;
+}
+.row {
+    display: table;
+    clear: both;
+    margin-top: 0.7em;
+    width: 100%
+}
+.column {
+    float: left;
+}
+.left {
+    width: 7%;
+    font-weight: 700;
+    padding-top: 2px;
+    font-size: 15px;
+}
+.right {
+    width: 90%;
+}
+.right > p {  margin-top: 0.0em; margin-bottom: 0em; }
+
+.venue{
+    // color: #34A853;
+}
+.arxiv{
+    color: #b31b1b;
+}
+
+.conf{
+    // color: #4285F4;
+   color: #114EC8;
+    // color: black;
+}
+.journal{
+    // color: #279E46;
+    color: #34A853;
+    // color: black;
+}
+.section a:link {
+   // color: #114EC8;
+  color: #4285F4;
+  background-color: transparent;
+  text-decoration: none;
+  // text-decoration: underline;
+}
+
+.section a:visited {
+   // color: #114EC8;
+  // color: #192EEA;
+  color: #4285F4;
+  background-color: transparent;
+  text-decoration: none;
+  // text-decoration: underline;
+}
+
+.section a:hover {
+  background-color: transparent;
+  text-decoration: none;
+    color: #F49F1C;
+    // color: #b31b1b;
+    // color: #F49F1C;
+}
+
+.award{
+    color: #F49F1C;
+    // color: #FBBC05;
+}
+
+hr.sep {
+    border: 0.2px solid rgba(130, 130, 130, 0.3);
+    border-radius: 1px;
+    padding: 0px;
+    margin: 0px;  
+    width: 100%;
+}
+
+.masthead {
+    font-weight: 500;
+    background: rgba(255,255,255,1);  // set a color to hide content that may appear below masthead
+    font-size: 17px;
+    position: fixed;
+    top: 0;
+    // border-bottom: 1.5px solid #f2f3f3;
+    border-bottom: 1px solid rgba(130, 130, 130, 0.5);
+    -webkit-animation: intro 0.3s both;
+    animation: intro 0.3s both;
+    -webkit-animation-delay: 0.15s;
+    animation-delay: 0.15s;
+    z-index: 20;
+    width: 100%;
+    height: 60px; // need a magic number here which may break in different viewports
+    margin-top:-18px;
+}
+.greedy-nav{
+    background: rgba(255,255,255,1);  // set a color to hide content that may appear below masthead
+    font-weight: 500;
+    // color: rgba(250, 250, 250, 1);
+}
+.greedy-nav a{
+    // color: rgba(250, 250, 250, 1);
+}
+body {
+    padding: 85px 0 0;
+    margin: 0px;
+    line-height: 1.5;
+    color: rgba(70, 70, 70, 1);
+}
+.section{
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: -1em;
+    margin-bottom: 0;
+}
+.section > p{
+    font-size: 15px;
+    text-align: justify;
+    margin-top: 0em; 
+    margin-bottom: 0em; 
+    padding-top: 0.5em;
+    padding-left: 1.5em;
+    padding-right: 4em;
+}
+
+#full-publication{
+    margin-top: -60px;
+}
+
+#bio{
+    margin-top: -60px;
+}
+.author__avatar img {
+    max-width: 160px;
+    border-radius: 30%;
+    border-width: 0.5px;
+    border-color: rgba(130, 130, 130, 0.3);
+    // border-color: #F49F1C;
+}
+
+
+.author__content {
+    font-size: 18px;
+}
+
+.author__urls-wrapper {
+    font-size: 18px;
+}
+
+.author__bio {
+    margin-top: -0.4em;
+    margin-bottom: -0.2em;
+	font-size: 18px; 
+}
+
+@media screen and (max-width:1023px) {
+    .my_list{
+        font-family:  Arial, Helvetica, sans-serif;
+        font-size:  14px;
+    }
+    .left {
+        width: 10%;
+        font-weight: 900;
+        padding-top: 2px;
+        font-size: 14px;
+    }
+    p.title{
+        font-weight: 900;
+        color: (67, 124, 227, 0.96);
+        font-size: 14px;
+    }
+    .section > p{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:768px) {
+    .section{
+        width: 100%;
+    }
+}
+@media screen and (max-width:576px) {
+    .author__bio {
+        font-size: 16px
+    }
+    .left {
+        width: 100%;
+    }
+    .right {
+        margin-top: -20px;
+        width: 100%;
+    }
+    .section > p{
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+} 

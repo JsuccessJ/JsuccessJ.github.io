@@ -1,0 +1,16 @@
+# main links
+main:
+  - title: "Home"
+    url: /
+  - title: "About"
+    url: /#bio
+  - title: "Projects"
+    url: /#projects
+  - title: "Skills"
+    url: /#skills
+  - title: "Contact"
+    url: /#contact
+  # - title: "Blog"
+    # url: /posts/
+  # - title: "CV"
+    # url: /assets/files/cv.pdf 

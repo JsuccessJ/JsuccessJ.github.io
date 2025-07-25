@@ -4,13 +4,15 @@ main:
     url: /
   - title: "About"
     url: /#bio
-  - title: "Projects"
-    url: /#projects
-  - title: "Skills"
-    url: /#skills
+  - title: "Publications"
+    url: /#pub
+  - title: "Education"
+    url: /#edu
+  - title: "Experiences"
+    url: /#experience
+  - title: "Honors"
+    url: /#honors
   - title: "Contact"
     url: /#contact
-  # - title: "Blog"
-    # url: /posts/
   # - title: "CV"
     # url: /assets/files/cv.pdf 

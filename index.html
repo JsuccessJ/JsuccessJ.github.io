@@ -281,15 +281,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Clear highlights when clicking outside sections
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.section') && 
-            !e.target.closest('.greedy-nav')) {
-            clearHighlights();
-        }
-    });
+    // 모바일과 데스크톱 모두 지원하는 이벤트 처리
+    function addClearHighlightEvents() {
+        // 클릭 이벤트
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.section') && 
+                !e.target.closest('.greedy-nav') &&
+                !e.target.closest('.masthead')) {
+                clearHighlights();
+            }
+        });
 
-    // Clear highlights on escape key
+        // 모바일 터치 이벤트 추가
+        document.addEventListener('touchstart', function(e) {
+            if (!e.target.closest('.section') && 
+                !e.target.closest('.greedy-nav') &&
+                !e.target.closest('.masthead')) {
+                clearHighlights();
+            }
+        });
+
+        // 스크롤 시에도 하이라이트 해제 (모바일에서 유용)
+        let scrollTimer = null;
+        window.addEventListener('scroll', function() {
+            if (scrollTimer !== null) {
+                clearTimeout(scrollTimer);
+            }
+            scrollTimer = setTimeout(function() {
+                // 스크롤이 끝난 후 3초 뒤에 하이라이트 해제
+                clearHighlights();
+            }, 3000);
+        });
+    }
+
+    addClearHighlightEvents();
+
+    // ESC 키로 하이라이트 해제
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             clearHighlights();

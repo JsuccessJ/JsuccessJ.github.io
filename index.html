@@ -24,6 +24,26 @@ author_profile: true
     margin-top: -0.5em;
     margin-bottom: 0;
 }
+
+/* 네비게이션 활성 상태 스타일 - 빨간색을 파란색으로 변경 */
+.greedy-nav .current,
+.greedy-nav a.current,
+.masthead__menu-item--lg.current,
+.greedy-nav__toggle.current {
+    border-bottom: 2px solid #4285F4 !important;
+    color: #4285F4 !important;
+}
+
+.greedy-nav .current:hover,
+.greedy-nav a.current:hover {
+    border-bottom-color: #114EC8 !important;
+    color: #114EC8 !important;
+}
+
+/* 네비게이션 링크 일반 상태도 파란색 계열로 */
+.greedy-nav a:hover {
+    color: #4285F4 !important;
+}
 </style>
 
 <div id="bio" class="section">

@@ -17,36 +17,12 @@ author_profile: true
 .section.highlighted {
     opacity: 1;
     filter: none;
-    box-shadow: 0 0 20px rgba(67, 124, 227, 0.3);
-    border-radius: 8px;
-    padding: 1em;
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.clear-highlight {
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    z-index: 1000;
-    background: rgba(67, 124, 227, 0.9);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.clear-highlight.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.clear-highlight:hover {
-    background: rgba(67, 124, 227, 1);
+    box-shadow: 0 0 15px rgba(67, 124, 227, 0.4);
+    border-radius: 6px;
+    padding: 0.5em 0.8em;
+    background: rgba(255, 255, 255, 0.03);
+    margin-top: -1.2em;
+    margin-bottom: 0.2em;
 }
 </style>
 
@@ -222,13 +198,6 @@ author_profile: true
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Create clear highlight button
-    const clearButton = document.createElement('button');
-    clearButton.className = 'clear-highlight';
-    clearButton.textContent = '전체 보기';
-    clearButton.title = 'Clear section highlight';
-    document.body.appendChild(clearButton);
-
     // Get all navigation links
     const navLinks = document.querySelectorAll('.greedy-nav a[href^="/#"]');
     const sections = document.querySelectorAll('.section');
@@ -238,7 +207,6 @@ document.addEventListener('DOMContentLoaded', function() {
         sections.forEach(section => {
             section.classList.remove('dimmed', 'highlighted');
         });
-        clearButton.classList.remove('show');
     }
 
     // Function to highlight specific section
@@ -256,9 +224,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     section.classList.add('highlighted');
                 }
             });
-            
-            // Show clear button
-            clearButton.classList.add('show');
         }
     }
 
@@ -277,14 +242,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Clear highlight button event
-    clearButton.addEventListener('click', clearHighlights);
-
     // Clear highlights when clicking outside sections
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.section') && 
-            !e.target.closest('.greedy-nav') && 
-            !e.target.closest('.clear-highlight')) {
+            !e.target.closest('.greedy-nav')) {
             clearHighlights();
         }
     });

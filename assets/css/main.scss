@@ -250,42 +250,40 @@ body {
         font-size: 14px;
     }
 }
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1200px) {
     .section{
         width: 100%;
     }
     
-    /* 모바일에서 상단 메뉴들 모두 숨기고 햄버거만 남기기 */
-    .greedy-nav .visible-links {
+    /* 모든 네비게이션 링크 숨기기 - 더 강력한 방법 */
+    .masthead .greedy-nav .visible-links,
+    .greedy-nav .visible-links,
+    .greedy-nav ul {
         display: none !important;
+        visibility: hidden !important;
     }
     
-    .greedy-nav__toggle {
+    /* 햄버거 메뉴 강제 표시 - 모든 가능한 셀렉터 */
+    .greedy-nav__toggle,
+    .masthead .greedy-nav__toggle,
+    .greedy-nav .greedy-nav__toggle,
+    button.greedy-nav__toggle,
+    .masthead button.greedy-nav__toggle {
         display: block !important;
+        visibility: visible !important;
+        position: relative !important;
+        float: right !important;
         color: #4285F4 !important;
+        background: transparent !important;
+        border: none !important;
+        font-size: 18px !important;
+        padding: 10px !important;
+        cursor: pointer !important;
+        z-index: 999 !important;
     }
     
     .greedy-nav__toggle:hover {
         color: #114EC8 !important;
-    }
-    
-    /* 햄버거 드롭다운 메뉴 스타일 */
-    .greedy-nav .hidden-links {
-        background: white !important;
-        border: 1px solid #4285F4 !important;
-        border-radius: 5px !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-    }
-    
-    .greedy-nav .hidden-links a {
-        color: #333 !important;
-        padding: 12px 20px !important;
-        border-bottom: 1px solid #eee !important;
-    }
-    
-    .greedy-nav .hidden-links a:hover {
-        background-color: #f8f9fa !important;
-        color: #4285F4 !important;
     }
 }
 @media screen and (max-width:576px) {

@@ -21,7 +21,7 @@ author_profile: true
     border-radius: 6px;
     padding: 0.3em 0.8em;
     background: rgba(255, 255, 255, 0.05);
-    margin-top: var(--dynamic-margin-top, -3em);  /* 이 줄 수정 */
+    margin-top: -0.8em;
     margin-bottom: 0;
 }
 </style>
@@ -206,30 +206,17 @@ document.addEventListener('DOMContentLoaded', function() {
     function clearHighlights() {
         sections.forEach(section => {
             section.classList.remove('dimmed', 'highlighted');
-            section.style.removeProperty('--dynamic-margin-top'); // 이 줄 추가
         });
     }
 
     // Function to highlight specific section
     function highlightSection(targetId) {
+        // Clear previous highlights
         clearHighlights();
         
         const targetSection = document.querySelector(targetId);
         if (targetSection) {
-            // 섹션 내 제목 요소 찾기
-            const titleElement = targetSection.querySelector('h5.section-title');
-            if (titleElement) {
-                // 섹션 상단에서 제목까지의 거리 계산
-                const sectionRect = targetSection.getBoundingClientRect();
-                const titleRect = titleElement.getBoundingClientRect();
-                const offsetFromTop = titleRect.top - sectionRect.top;
-                
-                // 제목 바로 위에서 시작하도록 동적 margin 설정
-                const dynamicMarginTop = -offsetFromTop - 5; // -5px는 약간의 여백
-                targetSection.style.setProperty('--dynamic-margin-top', `${dynamicMarginTop}px`);
-            }
-            
-            // 하이라이트 적용
+            // Dim all sections
             sections.forEach(section => {
                 if (section !== targetSection) {
                     section.classList.add('dimmed');

@@ -4,6 +4,8 @@ main:
     url: /
   - title: "About"
     url: /#bio
+  - title: "Research"
+    url: /#interests
   - title: "Publications"
     url: /#pub
   - title: "Education"

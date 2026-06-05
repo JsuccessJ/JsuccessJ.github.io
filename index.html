@@ -5,10 +5,24 @@ author_profile: true
 ---
 
 <style>
+/* ===== 섹션 기본 레이아웃 ===== */
 .section {
     transition: opacity 0.5s ease, filter 0.5s ease;
+    margin-bottom: 2em;
+    padding-top: 0.5em;
 }
 
+.section h5.section-title {
+    margin-top: 1.2em !important;
+    margin-bottom: 0.4em !important;
+}
+
+.section hr.sep {
+    margin-top: 0.3em;
+    margin-bottom: 0.8em;
+}
+
+/* ===== dimmed / highlighted 상태 ===== */
 .section.dimmed {
     opacity: 0.3;
     filter: blur(1px);
@@ -21,11 +35,11 @@ author_profile: true
     border-radius: 6px;
     padding: 0.3em 0.8em;
     background: rgba(255, 255, 255, 0.05);
-    margin-top: -0.5em;
-    margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0.5em;
 }
 
-/* 네비게이션 활성 상태 스타일 - 빨간색을 파란색으로 변경 */
+/* ===== 네비게이션 활성 상태 (파란색) ===== */
 .greedy-nav .current,
 .greedy-nav a.current,
 .masthead__menu-item--lg.current,
@@ -40,7 +54,6 @@ author_profile: true
     color: #114EC8 !important;
 }
 
-/* 네비게이션 링크 일반 상태도 파란색 계열로 */
 .greedy-nav a:hover {
     color: #4285F4 !important;
 }
@@ -205,25 +218,20 @@ author_profile: true
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Get all navigation links
     const navLinks = document.querySelectorAll('.greedy-nav a[href^="/#"]');
     const sections = document.querySelectorAll('.section');
 
-    // Function to clear all highlights
     function clearHighlights() {
         sections.forEach(section => {
             section.classList.remove('dimmed', 'highlighted');
         });
     }
 
-    // Function to highlight specific section
     function highlightSection(targetId) {
-        // Clear previous highlights
         clearHighlights();
         
         const targetSection = document.querySelector(targetId);
         if (targetSection) {
-            // Dim all sections
             sections.forEach(section => {
                 if (section !== targetSection) {
                     section.classList.add('dimmed');
@@ -234,32 +242,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Add click event listeners to navigation links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             if (href && href.startsWith('/#')) {
-                const targetId = href.substring(1); // Remove the '/'
+                const targetId = href.substring(1);
                 const targetSection = document.querySelector(targetId);
                 
                 if (targetSection) {
-                    // Prevent default anchor behavior
                     e.preventDefault();
                     
-                    // Calculate position to center the section
                     const rect = targetSection.getBoundingClientRect();
                     const windowHeight = window.innerHeight;
                     const sectionHeight = rect.height;
                     const offsetTop = targetSection.offsetTop;
                     const centerPosition = offsetTop - (windowHeight - sectionHeight) / 2;
                     
-                    // Smooth scroll to center position
                     window.scrollTo({
                         top: Math.max(0, centerPosition),
                         behavior: 'smooth'
                     });
                     
-                    // Small delay to allow smooth scrolling, then highlight
                     setTimeout(() => {
                         highlightSection(targetId);
                     }, 500);
@@ -268,9 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 모바일과 데스크톱 모두 지원하는 이벤트 처리
     function addClearHighlightEvents() {
-        // 클릭 이벤트
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.section') && 
                 !e.target.closest('.greedy-nav') &&
@@ -279,7 +280,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // 모바일 터치 이벤트 추가
         document.addEventListener('touchstart', function(e) {
             if (!e.target.closest('.section') && 
                 !e.target.closest('.greedy-nav') &&
@@ -288,14 +288,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // 스크롤 시에도 하이라이트 해제 (모바일에서 유용)
         let scrollTimer = null;
         window.addEventListener('scroll', function() {
             if (scrollTimer !== null) {
                 clearTimeout(scrollTimer);
             }
             scrollTimer = setTimeout(function() {
-                // 스크롤이 끝난 후 3초 뒤에 하이라이트 해제
                 clearHighlights();
             }, 3000);
         });
@@ -303,7 +301,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     addClearHighlightEvents();
 
-    // ESC 키로 하이라이트 해제
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             clearHighlights();
